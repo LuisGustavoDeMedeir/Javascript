@@ -1,41 +1,42 @@
-//Importando o módulo http nativo do Node.js
+// Importa o módulo http nativo do Node.js
 import http from 'http';
-// Definindo a porta do servidor
 
-const Port = 3000;
-//Criando o servidor
-const server = http.createServer((req, res) => {
-    const url = req.url;
-    const method = req.method;
-    // Definindo o cabeçalho da resposta como HTML
-    res.setHeader('Content-Type', 'text/html; charset=utf-8');
-    
-    //roteamento básico
+const PORT = 3000;
+
+// Cria o servidor
+const server = http.createServer((request, response) => {
+    const url = request.url;
+    const method = request.method;
+
+    // Define o cabeçalho da resposta com HTML
+    response.setHeader('Content-Type', 'text/html; charset=utf-8');
+
+    // Roteamento básico
     if (url === '/') {
-        res.statusCode = 200;// OK
-        res.end('<h1>Bem-vindo à página inicial!</h1>');
-    } else if (url === '/sobre' && method === 'GET') {
-        res.statusCode = 200;// OK
-        res.end(
-            '<h1>Sobre nós</h1><p>Esta é uma aplicação de exemplo com Node.js puro.</p>'
-        );
-    } else if (url === '/contato') {
-        res.statusCode = 200;// OK
-        res.end('<h1>Fale com a gente</h1><p>Email:</p>');
-    } else if (url === '/fotos') {
-        res.statusCode = 200;// OK
-        res.end('<h1>Fotos</h1>');
-    } else if (url === '/imagens') {
-        res.statusCode = 200;// OK
-        res.end('<h1>Imagens</h1>');
-    } else {
-        //se nenhuma rota for correspondida
-        res.statusCode = 404;// Not Found
-        res.end('<h1>404 - Página não encontrada</h1>');
-    }
+        response.statusCode = 200; // OK
+        response.end("<h1>Página Inicial<h1>");
 
+    } else if (url === "/sobre" && method === "GET") {
+        response.statusCode = 200; // OK
+        response.end(
+            "<h1>Sobre Nós</h1><p>Esta é uma aplicação de exemplo com Node.js puro.</p>"
+        );
+
+    } else if (url === "/contato") {
+        response.statusCode = 200; // OK
+        response.end("<h1>Fale conosco</h1>");
+
+    } else if (url === "/fotos") {
+        response.statusCode = 200; // OK
+        response.end("<h1>Fotos</h1>");
+    } else {
+        // See nenhuma rota corresponder
+        response.statusCode = 404; // Not Found
+        response.end("<h1>404 - Página Não Encontrada</h1>");
+    }
 });
-// iniciando o servidor para ouvir na porta definida
-server.listen(Port, () => {
-    console.log(`Servidor rodando em http://localhost:${Port}`);
+
+// Inicia o servidor na porta especificada
+server.listen(PORT, () => {
+    console.log(`Servidor rodando em http://localhost:${PORT}`);
 });

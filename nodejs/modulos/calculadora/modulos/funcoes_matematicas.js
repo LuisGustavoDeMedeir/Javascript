@@ -1,13 +1,20 @@
-export function somar(num1,num2,num3){
- return num1 + num2 + num3;
-};
-export function suntrair(a,b){
- return a - b;
+export function somar(a, b) {
+    return a + b;
 }
- export function multiplicar(a,b){
- return a * b;
+
+export function subtrair(a, b) {
+    return a - b;
 }
-export function dividir (a,b) {
-    if (b === 0) { return 'Erro: Divisão por zero não é permitida.'; }
+
+export function multiplicar(a, b) {
+    return a * b;
+}
+
+export function dividir(a, b) {
+    if (b === 0) {
+        throw new Error('Divisão por zero não é permitida.');
+    }
     return a / b;
 }
+
+//module.exports = { somar, subtrair, multiplicar, dividir };

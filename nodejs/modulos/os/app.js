@@ -1,4 +1,3 @@
-//const os = require('os');
-import os from 'os';
+const os = require('os');
 
-console.log(os.platform()); 
+console.log(os.platform());

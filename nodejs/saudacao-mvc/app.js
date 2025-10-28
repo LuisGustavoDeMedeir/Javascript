@@ -21,6 +21,9 @@ app.use('/usuarios', usuariosRoutes);
 const produtosRouts = require('./routes/produtos');
 app.use('/produtos', produtosRoutes);
 
+const produtosControler = require('./controlers/produtosControler');
+app.post('/produtos', produtosControler.cadastrarProduto);
+
 //Criar uma nova rota
 //Clientes
 const clientesRouts = require('./routes/clientes');

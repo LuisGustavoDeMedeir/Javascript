@@ -10,7 +10,7 @@ module.exports = {
     login: (req, res) => {
         const { login, senha } = req.body;
         const mensagem = usuariosModel.gerarMensagemLogin(login, senha);
-        res.send('<h1>${mensagemLogin}</h1>');
+        res.send(`<h1>${mensagem}</h1>`);
     }
 };
 

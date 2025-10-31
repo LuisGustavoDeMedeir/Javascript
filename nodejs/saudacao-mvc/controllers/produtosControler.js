@@ -1,26 +1,18 @@
-const ProdutosController = {
-    index: (req, res) => {
-        // Render the produtos view
-        res.render('produtos');
+const produtosModel = require('../models/produtosmodel');
+const { camisetas } = require('./siteController');
+mudule.exports = {
+    produtos:(req,res) => {
+        res.sendFile('produtos.html',{root:'./views'})
     },
-
-    listarProdutos: (req, res) => {
-        // Example product data (you might want to get this from a database)
-        const produtos = [
-            { id: 1, nome: 'Produto 1', preco: 100 },
-            { id: 2, nome: 'Produto 2', preco: 200 },
-            { id: 3, nome: 'Produto 3', preco: 300 }
-        ];
-
-        res.render('produtos', { produtos });
+     camisetas:(req,res) => {
+        res.sendFile('camisetas.html',{root:'./views'})
     },
-
-    criar: (req, res) => {
-        // Handle product creation
-        const novoProduto = req.body;
-        // Add logic to save the product
-        res.redirect('/produtos');
+     formCadastrar:(req,res) => {
+        res.sendFile('formCadatrar.html',{root:'./views'})
+    },
+    cadastrar: (res,res) => {
+        const { id,descrição,quantidade,preso} = req.body;
+        const mengemCadastro = produtosMudek.cadastror(id,descrição,quantidade,preso);
+        res.send('<h1>${mensagemCanastro}</h1>');
     }
-};
-
-module.exports = ProdutosController;
+}
